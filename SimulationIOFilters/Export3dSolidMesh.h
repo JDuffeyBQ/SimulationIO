@@ -10,12 +10,12 @@
 #include <QtCore/QString>
 #include <QtCore/QWaitCondition>
 
+#include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/IntVec3FilterParameter.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
-#include "SIMPLib/SIMPLib.h"
 
 class QProcess;
 
@@ -27,6 +27,8 @@ class QProcess;
 class SimulationIO_EXPORT Export3dSolidMesh : public AbstractFilter
 {
   Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
   PYB11_CREATE_BINDINGS(Export3dSolidMesh SUPERCLASS AbstractFilter)
   PYB11_PROPERTY(int MeshingPackage READ getMeshingPackage WRITE setMeshingPackage)
   PYB11_PROPERTY(QString outputPath READ getoutputPath WRITE setoutputPath)
@@ -52,6 +54,7 @@ class SimulationIO_EXPORT Export3dSolidMesh : public AbstractFilter
 
   PYB11_PROPERTY(QString NetgenSTLFileName READ getNetgenSTLFileName WRITE setNetgenSTLFileName)
   PYB11_PROPERTY(int MeshSize READ getMeshSize WRITE setMeshSize)
+#endif
 
 public:
   SIMPL_SHARED_POINTERS(Export3dSolidMesh)

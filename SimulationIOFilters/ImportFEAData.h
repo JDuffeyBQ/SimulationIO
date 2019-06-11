@@ -10,12 +10,12 @@
 #include <QtCore/QSharedPointer>
 #include <QtCore/QWaitCondition>
 
+#include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/IntVec3FilterParameter.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
-#include "SIMPLib/SIMPLib.h"
 
 class AttributeMatrix;
 class DataContainer;
@@ -32,6 +32,8 @@ class QProcess;
 class SimulationIO_EXPORT ImportFEAData : public AbstractFilter
 {
   Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
   PYB11_CREATE_BINDINGS(ImportFEAData SUPERCLASS AbstractFilter)
   PYB11_PROPERTY(int FEAPackage READ getFEAPackage WRITE setFEAPackage)
   PYB11_PROPERTY(QString odbName READ getodbName WRITE setodbName)
@@ -62,6 +64,7 @@ class SimulationIO_EXPORT ImportFEAData : public AbstractFilter
   PYB11_PROPERTY(QString DataContainerName READ getDataContainerName WRITE setDataContainerName)
   PYB11_PROPERTY(QString VertexAttributeMatrixName READ getVertexAttributeMatrixName WRITE setVertexAttributeMatrixName)
   PYB11_PROPERTY(QString CellAttributeMatrixName READ getCellAttributeMatrixName WRITE setCellAttributeMatrixName)
+#endif
 
 public:
   SIMPL_SHARED_POINTERS(ImportFEAData)

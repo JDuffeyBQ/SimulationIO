@@ -6,6 +6,7 @@
 
 #include <QtCore/QString>
 
+#include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/CoreFilters/FileWriter.h"
@@ -17,7 +18,6 @@
 #include "SIMPLib/FilterParameters/IntVec3FilterParameter.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/Geometry/MeshStructs.h"
-#include "SIMPLib/SIMPLib.h"
 
 #include "SimulationIO/SimulationIOPlugin.h"
 
@@ -27,6 +27,8 @@
 class SimulationIO_EXPORT ExportDAMASKFiles : public AbstractFilter
 {
   Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
   PYB11_CREATE_BINDINGS(ExportDAMASKFiles SUPERCLASS AbstractFilter)
   PYB11_PROPERTY(int DataFormat READ getDataFormat WRITE setDataFormat)
   PYB11_PROPERTY(QString OutputPath READ getOutputPath WRITE setOutputPath)
@@ -36,6 +38,7 @@ class SimulationIO_EXPORT ExportDAMASKFiles : public AbstractFilter
   PYB11_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
   PYB11_PROPERTY(DataArrayPath CellEulerAnglesArrayPath READ getCellEulerAnglesArrayPath WRITE setCellEulerAnglesArrayPath)
   PYB11_PROPERTY(bool CompressGeomFile READ getCompressGeomFile WRITE setCompressGeomFile)
+#endif
 
 public:
   SIMPL_SHARED_POINTERS(ExportDAMASKFiles)

@@ -6,6 +6,7 @@
 
 #include <QtCore/QString>
 
+#include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/CoreFilters/FileWriter.h"
 #include "SIMPLib/DataArrays/StringDataArray.h"
 
@@ -19,7 +20,6 @@
 #include "SIMPLib/FilterParameters/IntVec3FilterParameter.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/Geometry/MeshStructs.h"
-#include "SIMPLib/SIMPLib.h"
 
 #include "SimulationIO/SimulationIODLLExport.h"
 
@@ -29,6 +29,8 @@
 class SimulationIO_EXPORT CreateFEAInputFiles : public AbstractFilter
 {
   Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
   PYB11_CREATE_BINDINGS(CreateFEAInputFiles SUPERCLASS AbstractFilter)
   PYB11_PROPERTY(int FEAPackage READ getFEAPackage WRITE setFEAPackage)
   PYB11_PROPERTY(QString JobName READ getJobName WRITE setJobName)
@@ -45,6 +47,7 @@ class SimulationIO_EXPORT CreateFEAInputFiles : public AbstractFilter
   PYB11_PROPERTY(int NumClusters READ getNumClusters WRITE setNumClusters)
   PYB11_PROPERTY(DynamicTableData MatConst READ getMatConst WRITE setMatConst)
   PYB11_PROPERTY(DataArrayPath PhaseNamesArrayPath READ getPhaseNamesArrayPath WRITE setPhaseNamesArrayPath)
+#endif
 
 public:
   SIMPL_SHARED_POINTERS(CreateFEAInputFiles)

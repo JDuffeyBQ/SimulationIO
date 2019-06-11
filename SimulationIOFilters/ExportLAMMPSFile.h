@@ -37,12 +37,12 @@
 
 #include <QtCore/QString>
 
+#include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/DataContainers/DataContainer.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
-#include "SIMPLib/SIMPLib.h"
 
 #include "SimulationIO/SimulationIOPlugin.h"
 
@@ -52,9 +52,13 @@
 class SimulationIO_EXPORT ExportLAMMPSFile : public AbstractFilter
 {
   Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
   PYB11_CREATE_BINDINGS(ExportLAMMPSFile SUPERCLASS AbstractFilter)
   PYB11_PROPERTY(QString LammpsFile READ getLammpsFile WRITE setLammpsFile)
   PYB11_PROPERTY(DataArrayPath AtomFeatureLabelsPath READ getAtomFeatureLabelspath WRITE setAtomFeatureLabelsPath)
+#endif
+
 public:
   SIMPL_SHARED_POINTERS(ExportLAMMPSFile)
   SIMPL_FILTER_NEW_MACRO(ExportLAMMPSFile)
