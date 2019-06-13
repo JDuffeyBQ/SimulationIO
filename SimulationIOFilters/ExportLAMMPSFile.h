@@ -55,6 +55,10 @@ class SimulationIO_EXPORT ExportLAMMPSFile : public AbstractFilter
 
 #ifdef SIMPL_ENABLE_PYTHON
   PYB11_CREATE_BINDINGS(ExportLAMMPSFile SUPERCLASS AbstractFilter)
+  PYB11_SHARED_POINTERS(ExportLAMMPSFile)
+  PYB11_FILTER_NEW_MACRO(ExportLAMMPSFile)
+  PYB11_FILTER_PARAMETER(QString, LammpsFile)
+  PYB11_FILTER_PARAMETER(DataArrayPath, AtomFeatureLabelsPath)
   PYB11_PROPERTY(QString LammpsFile READ getLammpsFile WRITE setLammpsFile)
   PYB11_PROPERTY(DataArrayPath AtomFeatureLabelsPath READ getAtomFeatureLabelspath WRITE setAtomFeatureLabelsPath)
 #endif
