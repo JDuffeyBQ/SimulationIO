@@ -8,7 +8,10 @@
 #include <QtCore/QFile>
 #include <QtCore/QString>
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/Common/TemplateHelpers.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/BooleanFilterParameter.h"
@@ -37,6 +40,8 @@
 #include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Utilities/FileSystemPathHelper.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
 
 #include "SimulationIO/SimulationIOConstants.h"
 #include "SimulationIO/SimulationIOVersion.h"
@@ -1083,4 +1088,273 @@ const QString Export3dSolidMesh::getHumanLabel() const
 const QUuid Export3dSolidMesh::getUuid()
 {
   return QUuid("{fcff3b03-bff6-5511-bc65-5e558d12f0a6}");
+}
+
+// -----------------------------------------------------------------------------
+Export3dSolidMesh::Pointer Export3dSolidMesh::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<Export3dSolidMesh> Export3dSolidMesh::New()
+{
+  struct make_shared_enabler : public Export3dSolidMesh
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+const QString Export3dSolidMesh::getNameOfClass() const
+{
+  return QString("_SUPERExport3dSolidMesh");
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::ClassName()
+{
+  return QString("_SUPERExport3dSolidMesh");
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setMeshingPackage(const int& value)
+{
+  m_MeshingPackage = value;
+}
+
+// -----------------------------------------------------------------------------
+int Export3dSolidMesh::getMeshingPackage() const
+{
+  return m_MeshingPackage;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setoutputPath(const QString& value)
+{
+  m_outputPath = value;
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::getoutputPath() const
+{
+  return m_outputPath;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setPackageLocation(const QString& value)
+{
+  m_PackageLocation = value;
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::getPackageLocation() const
+{
+  return m_PackageLocation;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setSurfaceMeshFaceLabelsArrayPath(const DataArrayPath& value)
+{
+  m_SurfaceMeshFaceLabelsArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath Export3dSolidMesh::getSurfaceMeshFaceLabelsArrayPath() const
+{
+  return m_SurfaceMeshFaceLabelsArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setFeaturePhasesArrayPath(const DataArrayPath& value)
+{
+  m_FeaturePhasesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath Export3dSolidMesh::getFeaturePhasesArrayPath() const
+{
+  return m_FeaturePhasesArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setFeatureEulerAnglesArrayPath(const DataArrayPath& value)
+{
+  m_FeatureEulerAnglesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath Export3dSolidMesh::getFeatureEulerAnglesArrayPath() const
+{
+  return m_FeatureEulerAnglesArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setFeatureCentroidArrayPath(const DataArrayPath& value)
+{
+  m_FeatureCentroidArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath Export3dSolidMesh::getFeatureCentroidArrayPath() const
+{
+  return m_FeatureCentroidArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setRefineMesh(const bool& value)
+{
+  m_RefineMesh = value;
+}
+
+// -----------------------------------------------------------------------------
+bool Export3dSolidMesh::getRefineMesh() const
+{
+  return m_RefineMesh;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setMaxRadiusEdgeRatio(const float& value)
+{
+  m_MaxRadiusEdgeRatio = value;
+}
+
+// -----------------------------------------------------------------------------
+float Export3dSolidMesh::getMaxRadiusEdgeRatio() const
+{
+  return m_MaxRadiusEdgeRatio;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setMinDihedralAngle(const float& value)
+{
+  m_MinDihedralAngle = value;
+}
+
+// -----------------------------------------------------------------------------
+float Export3dSolidMesh::getMinDihedralAngle() const
+{
+  return m_MinDihedralAngle;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setLimitTetrahedraVolume(const bool& value)
+{
+  m_LimitTetrahedraVolume = value;
+}
+
+// -----------------------------------------------------------------------------
+bool Export3dSolidMesh::getLimitTetrahedraVolume() const
+{
+  return m_LimitTetrahedraVolume;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setMaxTetrahedraVolume(const float& value)
+{
+  m_MaxTetrahedraVolume = value;
+}
+
+// -----------------------------------------------------------------------------
+float Export3dSolidMesh::getMaxTetrahedraVolume() const
+{
+  return m_MaxTetrahedraVolume;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setOptimizationLevel(const int& value)
+{
+  m_OptimizationLevel = value;
+}
+
+// -----------------------------------------------------------------------------
+int Export3dSolidMesh::getOptimizationLevel() const
+{
+  return m_OptimizationLevel;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setTetDataContainerName(const QString& value)
+{
+  m_TetDataContainerName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::getTetDataContainerName() const
+{
+  return m_TetDataContainerName;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setVertexAttributeMatrixName(const QString& value)
+{
+  m_VertexAttributeMatrixName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::getVertexAttributeMatrixName() const
+{
+  return m_VertexAttributeMatrixName;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setCellAttributeMatrixName(const QString& value)
+{
+  m_CellAttributeMatrixName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::getCellAttributeMatrixName() const
+{
+  return m_CellAttributeMatrixName;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setGmshSTLFileName(const QString& value)
+{
+  m_GmshSTLFileName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::getGmshSTLFileName() const
+{
+  return m_GmshSTLFileName;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setMeshFileFormat(const int& value)
+{
+  m_MeshFileFormat = value;
+}
+
+// -----------------------------------------------------------------------------
+int Export3dSolidMesh::getMeshFileFormat() const
+{
+  return m_MeshFileFormat;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setNetgenSTLFileName(const QString& value)
+{
+  m_NetgenSTLFileName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString Export3dSolidMesh::getNetgenSTLFileName() const
+{
+  return m_NetgenSTLFileName;
+}
+
+// -----------------------------------------------------------------------------
+void Export3dSolidMesh::setMeshSize(const int& value)
+{
+  m_MeshSize = value;
+}
+
+// -----------------------------------------------------------------------------
+int Export3dSolidMesh::getMeshSize() const
+{
+  return m_MeshSize;
 }

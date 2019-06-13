@@ -4,6 +4,8 @@
 
 #include "ExportDAMASKFiles.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
 
 #include <QtCore/QDir>
@@ -28,6 +30,8 @@
 #include "SIMPLib/Math/GeometryMath.h"
 #include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Utilities/FileSystemPathHelper.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
 
 #include "SimulationIO/SimulationIOConstants.h"
 #include "SimulationIO/SimulationIOVersion.h"
@@ -478,4 +482,129 @@ const QString ExportDAMASKFiles::getHumanLabel() const
 const QUuid ExportDAMASKFiles::getUuid()
 {
   return QUuid("{7c58e612-d7d6-5ec7-806b-cce0c1c211a3}");
+}
+
+// -----------------------------------------------------------------------------
+ExportDAMASKFiles::Pointer ExportDAMASKFiles::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<ExportDAMASKFiles> ExportDAMASKFiles::New()
+{
+  struct make_shared_enabler : public ExportDAMASKFiles
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+const QString ExportDAMASKFiles::getNameOfClass() const
+{
+  return QString("_SUPERExportDAMASKFiles");
+}
+
+// -----------------------------------------------------------------------------
+QString ExportDAMASKFiles::ClassName()
+{
+  return QString("_SUPERExportDAMASKFiles");
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setDataFormat(const int& value)
+{
+  m_DataFormat = value;
+}
+
+// -----------------------------------------------------------------------------
+int ExportDAMASKFiles::getDataFormat() const
+{
+  return m_DataFormat;
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setOutputPath(const QString& value)
+{
+  m_OutputPath = value;
+}
+
+// -----------------------------------------------------------------------------
+QString ExportDAMASKFiles::getOutputPath() const
+{
+  return m_OutputPath;
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setGeometryFileName(const QString& value)
+{
+  m_GeometryFileName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString ExportDAMASKFiles::getGeometryFileName() const
+{
+  return m_GeometryFileName;
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setHomogenizationIndex(const int& value)
+{
+  m_HomogenizationIndex = value;
+}
+
+// -----------------------------------------------------------------------------
+int ExportDAMASKFiles::getHomogenizationIndex() const
+{
+  return m_HomogenizationIndex;
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setFeatureIdsArrayPath(const DataArrayPath& value)
+{
+  m_FeatureIdsArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath ExportDAMASKFiles::getFeatureIdsArrayPath() const
+{
+  return m_FeatureIdsArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setCellPhasesArrayPath(const DataArrayPath& value)
+{
+  m_CellPhasesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath ExportDAMASKFiles::getCellPhasesArrayPath() const
+{
+  return m_CellPhasesArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setCellEulerAnglesArrayPath(const DataArrayPath& value)
+{
+  m_CellEulerAnglesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath ExportDAMASKFiles::getCellEulerAnglesArrayPath() const
+{
+  return m_CellEulerAnglesArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void ExportDAMASKFiles::setCompressGeomFile(const bool& value)
+{
+  m_CompressGeomFile = value;
+}
+
+// -----------------------------------------------------------------------------
+bool ExportDAMASKFiles::getCompressGeomFile() const
+{
+  return m_CompressGeomFile;
 }

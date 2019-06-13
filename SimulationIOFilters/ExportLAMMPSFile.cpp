@@ -35,8 +35,10 @@
 
 #include "ExportLAMMPSFile.h"
 
+#include <QtCore/QTextStream>
 
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
+
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/DataContainerSelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/OutputFileFilterParameter.h"
@@ -46,6 +48,8 @@
 #include "SIMPLib/Geometry/VertexGeom.h"
 #include "SIMPLib/Utilities/FileSystemPathHelper.h"
 #include "SIMPLib/Utilities/SIMPLibEndian.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
 
 #include "SimulationIO/SimulationIOConstants.h"
 #include "SimulationIO/SimulationIOVersion.h"
@@ -332,4 +336,57 @@ const QString ExportLAMMPSFile::getSubGroupName() const
 const QString ExportLAMMPSFile::getHumanLabel() const
 {
   return "Export LAMMPS Data File";
+}
+
+// -----------------------------------------------------------------------------
+ExportLAMMPSFile::Pointer ExportLAMMPSFile::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<ExportLAMMPSFile> ExportLAMMPSFile::New()
+{
+  struct make_shared_enabler : public ExportLAMMPSFile
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+const QString ExportLAMMPSFile::getNameOfClass() const
+{
+  return QString("ExportLAMMPSFile");
+}
+
+// -----------------------------------------------------------------------------
+QString ExportLAMMPSFile::ClassName()
+{
+  return QString("ExportLAMMPSFile");
+}
+
+// -----------------------------------------------------------------------------
+void ExportLAMMPSFile::setLammpsFile(const QString& value)
+{
+  m_LammpsFile = value;
+}
+
+// -----------------------------------------------------------------------------
+QString ExportLAMMPSFile::getLammpsFile() const
+{
+  return m_LammpsFile;
+}
+
+// -----------------------------------------------------------------------------
+void ExportLAMMPSFile::setAtomFeatureLabelsPath(const DataArrayPath& value)
+{
+  m_AtomFeatureLabelsPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath ExportLAMMPSFile::getAtomFeatureLabelsPath() const
+{
+  return m_AtomFeatureLabelsPath;
 }

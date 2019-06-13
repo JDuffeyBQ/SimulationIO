@@ -12,7 +12,6 @@
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/Constants.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/IntVec3FilterParameter.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
@@ -91,82 +90,288 @@ class SimulationIO_EXPORT ImportFEAData : public AbstractFilter
 #endif
 
 public:
-  SIMPL_SHARED_POINTERS(ImportFEAData)
-  SIMPL_FILTER_NEW_MACRO(ImportFEAData)
-  SIMPL_TYPE_MACRO_SUPER(ImportFEAData, AbstractFilter)
+  using Self = ImportFEAData;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<Self>;
+  static Pointer NullPointer();
+
+  static std::shared_ptr<ImportFEAData> New();
+
+  /**
+   * @brief Returns the name of the class for _SUPERImportFEAData
+   */
+  const QString getNameOfClass() const;
+  /**
+   * @brief Returns the name of the class for _SUPERImportFEAData
+   */
+  static QString ClassName();
 
   ~ImportFEAData() override;
 
-  SIMPL_FILTER_PARAMETER(int, FEAPackage)
+  /**
+   * @brief Setter property for FEAPackage
+   */
+  void setFEAPackage(const int& value);
+  /**
+   * @brief Getter property for FEAPackage
+   * @return Value of FEAPackage
+   */
+  int getFEAPackage() const;
+
   Q_PROPERTY(int FEAPackage READ getFEAPackage WRITE setFEAPackage)
 
-  SIMPL_FILTER_PARAMETER(QString, odbName)
+  /**
+   * @brief Setter property for odbName
+   */
+  void setodbName(const QString& value);
+  /**
+   * @brief Getter property for odbName
+   * @return Value of odbName
+   */
+  QString getodbName() const;
+
   Q_PROPERTY(QString odbName READ getodbName WRITE setodbName)
 
-  SIMPL_FILTER_PARAMETER(QString, odbFilePath)
+  /**
+   * @brief Setter property for odbFilePath
+   */
+  void setodbFilePath(const QString& value);
+  /**
+   * @brief Getter property for odbFilePath
+   * @return Value of odbFilePath
+   */
+  QString getodbFilePath() const;
+
   Q_PROPERTY(QString odbFilePath READ getodbFilePath WRITE setodbFilePath)
 
-  SIMPL_FILTER_PARAMETER(QString, ABQPythonCommand)
+  /**
+   * @brief Setter property for ABQPythonCommand
+   */
+  void setABQPythonCommand(const QString& value);
+  /**
+   * @brief Getter property for ABQPythonCommand
+   * @return Value of ABQPythonCommand
+   */
+  QString getABQPythonCommand() const;
+
   Q_PROPERTY(QString ABQPythonCommand READ getABQPythonCommand WRITE setABQPythonCommand)
 
-  SIMPL_FILTER_PARAMETER(QString, InstanceName)
+  /**
+   * @brief Setter property for InstanceName
+   */
+  void setInstanceName(const QString& value);
+  /**
+   * @brief Getter property for InstanceName
+   * @return Value of InstanceName
+   */
+  QString getInstanceName() const;
+
   Q_PROPERTY(QString InstanceName READ getInstanceName WRITE setInstanceName)
 
-  SIMPL_FILTER_PARAMETER(QString, Step)
+  /**
+   * @brief Setter property for Step
+   */
+  void setStep(const QString& value);
+  /**
+   * @brief Getter property for Step
+   * @return Value of Step
+   */
+  QString getStep() const;
+
   Q_PROPERTY(QString Step READ getStep WRITE setStep)
 
-  SIMPL_FILTER_PARAMETER(int, FrameNumber)
+  /**
+   * @brief Setter property for FrameNumber
+   */
+  void setFrameNumber(const int& value);
+  /**
+   * @brief Getter property for FrameNumber
+   * @return Value of FrameNumber
+   */
+  int getFrameNumber() const;
+
   Q_PROPERTY(int FrameNumber READ getFrameNumber WRITE setFrameNumber)
 
-  /* SIMPL_FILTER_PARAMETER(QString, OutputVariable) */
-  /* Q_PROPERTY(QString OutputVariable READ getOutputVariable WRITE setOutputVariable) */
+  /**
+   * @brief Setter property for DEFORMInputFile
+   */
+  void setDEFORMInputFile(const QString& value);
+  /**
+   * @brief Getter property for DEFORMInputFile
+   * @return Value of DEFORMInputFile
+   */
+  QString getDEFORMInputFile() const;
 
-  /* SIMPL_FILTER_PARAMETER(QString, ElementSet) */
-  /* Q_PROPERTY(QString ElementSet READ getElementSet WRITE setElementSet) */
-
-  SIMPL_FILTER_PARAMETER(QString, DEFORMInputFile)
   Q_PROPERTY(QString DEFORMInputFile READ getDEFORMInputFile WRITE setDEFORMInputFile)
 
-  SIMPL_FILTER_PARAMETER(QString, BSAMInputFile)
+  /**
+   * @brief Setter property for BSAMInputFile
+   */
+  void setBSAMInputFile(const QString& value);
+  /**
+   * @brief Getter property for BSAMInputFile
+   * @return Value of BSAMInputFile
+   */
+  QString getBSAMInputFile() const;
+
   Q_PROPERTY(QString BSAMInputFile READ getBSAMInputFile WRITE setBSAMInputFile)
 
-  SIMPL_FILTER_PARAMETER(QString, DEFORMPointTrackInputFile)
+  /**
+   * @brief Setter property for DEFORMPointTrackInputFile
+   */
+  void setDEFORMPointTrackInputFile(const QString& value);
+  /**
+   * @brief Getter property for DEFORMPointTrackInputFile
+   * @return Value of DEFORMPointTrackInputFile
+   */
+  QString getDEFORMPointTrackInputFile() const;
+
   Q_PROPERTY(QString DEFORMPointTrackInputFile READ getDEFORMPointTrackInputFile WRITE setDEFORMPointTrackInputFile)
 
-  SIMPL_FILTER_PARAMETER(QString, TimeSeriesBundleName)
+  /**
+   * @brief Setter property for TimeSeriesBundleName
+   */
+  void setTimeSeriesBundleName(const QString& value);
+  /**
+   * @brief Getter property for TimeSeriesBundleName
+   * @return Value of TimeSeriesBundleName
+   */
+  QString getTimeSeriesBundleName() const;
+
   Q_PROPERTY(QString TimeSeriesBundleName READ getTimeSeriesBundleName WRITE setTimeSeriesBundleName)
 
-  SIMPL_FILTER_PARAMETER(bool, ImportSingleTimeStep)
+  /**
+   * @brief Setter property for ImportSingleTimeStep
+   */
+  void setImportSingleTimeStep(const bool& value);
+  /**
+   * @brief Getter property for ImportSingleTimeStep
+   * @return Value of ImportSingleTimeStep
+   */
+  bool getImportSingleTimeStep() const;
+
   Q_PROPERTY(bool ImportSingleTimeStep READ getImportSingleTimeStep WRITE setImportSingleTimeStep)
 
-  SIMPL_FILTER_PARAMETER(int, SingleTimeStepValue)
+  /**
+   * @brief Setter property for SingleTimeStepValue
+   */
+  void setSingleTimeStepValue(const int& value);
+  /**
+   * @brief Getter property for SingleTimeStepValue
+   * @return Value of SingleTimeStepValue
+   */
+  int getSingleTimeStepValue() const;
+
   Q_PROPERTY(int SingleTimeStepValue READ getSingleTimeStepValue WRITE setSingleTimeStepValue)
 
-  SIMPL_FILTER_PARAMETER(QString, SelectedTimeArrayName)
+  /**
+   * @brief Setter property for SelectedTimeArrayName
+   */
+  void setSelectedTimeArrayName(const QString& value);
+  /**
+   * @brief Getter property for SelectedTimeArrayName
+   * @return Value of SelectedTimeArrayName
+   */
+  QString getSelectedTimeArrayName() const;
+
   // Q_PROPERTY(QString SelectedTimeArrayName READ getSelectedTimeArrayName WRITE setSelectedTimeArrayName)
 
-  SIMPL_FILTER_PARAMETER(QString, SelectedTimeStepArrayName)
+  /**
+   * @brief Setter property for SelectedTimeStepArrayName
+   */
+  void setSelectedTimeStepArrayName(const QString& value);
+  /**
+   * @brief Getter property for SelectedTimeStepArrayName
+   * @return Value of SelectedTimeStepArrayName
+   */
+  QString getSelectedTimeStepArrayName() const;
+
   // Q_PROPERTY(QString SelectedTimeStepArrayName READ getSelectedTimeStepArrayName WRITE setSelectedTimeStepArrayName)
 
-  SIMPL_FILTER_PARAMETER(QString, SelectedPointNumArrayName)
+  /**
+   * @brief Setter property for SelectedPointNumArrayName
+   */
+  void setSelectedPointNumArrayName(const QString& value);
+  /**
+   * @brief Getter property for SelectedPointNumArrayName
+   * @return Value of SelectedPointNumArrayName
+   */
+  QString getSelectedPointNumArrayName() const;
+
   // Q_PROPERTY(QString SelectedPointNumArrayName READ getSelectedPointNumArrayName WRITE setSelectedPointNumArrayName)
 
-  SIMPL_FILTER_PARAMETER(QString, SelectedXCoordArrayName)
+  /**
+   * @brief Setter property for SelectedXCoordArrayName
+   */
+  void setSelectedXCoordArrayName(const QString& value);
+  /**
+   * @brief Getter property for SelectedXCoordArrayName
+   * @return Value of SelectedXCoordArrayName
+   */
+  QString getSelectedXCoordArrayName() const;
+
   // Q_PROPERTY(QString SelectedXCoordArrayName READ getSelectedXCoordArrayName WRITE setSelectedXCoordArrayName)
 
-  SIMPL_FILTER_PARAMETER(QString, SelectedYCoordArrayName)
+  /**
+   * @brief Setter property for SelectedYCoordArrayName
+   */
+  void setSelectedYCoordArrayName(const QString& value);
+  /**
+   * @brief Getter property for SelectedYCoordArrayName
+   * @return Value of SelectedYCoordArrayName
+   */
+  QString getSelectedYCoordArrayName() const;
+
   // Q_PROPERTY(QString SelectedYCoordArrayName READ getSelectedYCoordArrayName WRITE setSelectedYCoordArrayName)
 
-  SIMPL_FILTER_PARAMETER(QStringList, DataArrayList)
+  /**
+   * @brief Setter property for DataArrayList
+   */
+  void setDataArrayList(const QStringList& value);
+  /**
+   * @brief Getter property for DataArrayList
+   * @return Value of DataArrayList
+   */
+  QStringList getDataArrayList() const;
+
   Q_PROPERTY(QStringList DataArrayList READ getDataArrayList WRITE setDataArrayList)
 
-  SIMPL_FILTER_PARAMETER(QString, DataContainerName)
+  /**
+   * @brief Setter property for DataContainerName
+   */
+  void setDataContainerName(const QString& value);
+  /**
+   * @brief Getter property for DataContainerName
+   * @return Value of DataContainerName
+   */
+  QString getDataContainerName() const;
+
   Q_PROPERTY(QString DataContainerName READ getDataContainerName WRITE setDataContainerName)
 
-  SIMPL_FILTER_PARAMETER(QString, VertexAttributeMatrixName)
+  /**
+   * @brief Setter property for VertexAttributeMatrixName
+   */
+  void setVertexAttributeMatrixName(const QString& value);
+  /**
+   * @brief Getter property for VertexAttributeMatrixName
+   * @return Value of VertexAttributeMatrixName
+   */
+  QString getVertexAttributeMatrixName() const;
+
   Q_PROPERTY(QString VertexAttributeMatrixName READ getVertexAttributeMatrixName WRITE setVertexAttributeMatrixName)
 
-  SIMPL_FILTER_PARAMETER(QString, CellAttributeMatrixName)
+  /**
+   * @brief Setter property for CellAttributeMatrixName
+   */
+  void setCellAttributeMatrixName(const QString& value);
+  /**
+   * @brief Getter property for CellAttributeMatrixName
+   * @return Value of CellAttributeMatrixName
+   */
+  QString getCellAttributeMatrixName() const;
+
   Q_PROPERTY(QString CellAttributeMatrixName READ getCellAttributeMatrixName WRITE setCellAttributeMatrixName)
 
   /**
@@ -284,6 +489,29 @@ protected slots:
   void sendStandardOutput();
 
 private:
+  int m_FEAPackage = {};
+  QString m_odbName = {};
+  QString m_odbFilePath = {};
+  QString m_ABQPythonCommand = {};
+  QString m_InstanceName = {};
+  QString m_Step = {};
+  int m_FrameNumber = {};
+  QString m_DEFORMInputFile = {};
+  QString m_BSAMInputFile = {};
+  QString m_DEFORMPointTrackInputFile = {};
+  QString m_TimeSeriesBundleName = {};
+  bool m_ImportSingleTimeStep = {};
+  int m_SingleTimeStepValue = {};
+  QString m_SelectedTimeArrayName = {};
+  QString m_SelectedTimeStepArrayName = {};
+  QString m_SelectedPointNumArrayName = {};
+  QString m_SelectedXCoordArrayName = {};
+  QString m_SelectedYCoordArrayName = {};
+  QStringList m_DataArrayList = {};
+  QString m_DataContainerName = {};
+  QString m_VertexAttributeMatrixName = {};
+  QString m_CellAttributeMatrixName = {};
+
   /**
    * @brief writeABQpyscr
    * @param file
@@ -330,9 +558,6 @@ private:
   QString m_BundleMetaDataAMName;
 
 public:
-  /* Rule of 5: All special member functions should be defined if any are defined.
-   * https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#c21-if-you-define-or-delete-any-default-operation-define-or-delete-them-all
-   */
   ImportFEAData(const ImportFEAData&) = delete;            // Copy Constructor Not Implemented
   ImportFEAData& operator=(const ImportFEAData&) = delete; // Copy Assignment Not Implemented
   ImportFEAData(ImportFEAData&&) = delete;                 // Move Constructor Not Implemented

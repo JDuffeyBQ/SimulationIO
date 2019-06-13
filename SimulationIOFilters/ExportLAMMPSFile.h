@@ -39,10 +39,10 @@
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/Constants.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/DataContainers/DataContainer.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
+#include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "SimulationIO/SimulationIOPlugin.h"
 
@@ -64,16 +64,48 @@ class SimulationIO_EXPORT ExportLAMMPSFile : public AbstractFilter
 #endif
 
 public:
-  SIMPL_SHARED_POINTERS(ExportLAMMPSFile)
-  SIMPL_FILTER_NEW_MACRO(ExportLAMMPSFile)
-  SIMPL_TYPE_MACRO_SUPER_OVERRIDE(ExportLAMMPSFile, AbstractFilter)
+  using Self = ExportLAMMPSFile;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<Self>;
+  static Pointer NullPointer();
+
+  static std::shared_ptr<ExportLAMMPSFile> New();
+
+  /**
+   * @brief Returns the name of the class for ExportLAMMPSFile
+   */
+  const QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for ExportLAMMPSFile
+   */
+  static QString ClassName();
 
   ~ExportLAMMPSFile() override;
 
-  SIMPL_FILTER_PARAMETER(QString, LammpsFile)
+  /**
+   * @brief Setter property for LammpsFile
+   */
+  void setLammpsFile(const QString& value);
+  /**
+   * @brief Getter property for LammpsFile
+   * @return Value of LammpsFile
+   */
+  QString getLammpsFile() const;
+
   Q_PROPERTY(QString LammpsFile READ getLammpsFile WRITE setLammpsFile)
 
-  SIMPL_FILTER_PARAMETER(DataArrayPath, AtomFeatureLabelsPath)
+  /**
+   * @brief Setter property for AtomFeatureLabelsPath
+   */
+  void setAtomFeatureLabelsPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for AtomFeatureLabelsPath
+   * @return Value of AtomFeatureLabelsPath
+   */
+  DataArrayPath getAtomFeatureLabelsPath() const;
+
   Q_PROPERTY(DataArrayPath AtomFeatureLabelsPath READ getAtomFeatureLabelsPath WRITE setAtomFeatureLabelsPath)
 
   /**
@@ -178,7 +210,11 @@ protected:
   void initialize();
 
 private:
-  DEFINE_DATAARRAY_VARIABLE(int32_t, AtomFeatureLabels)
+  std::weak_ptr<DataArray<int32_t>> m_AtomFeatureLabelsPtr;
+  int32_t* m_AtomFeatureLabels = nullptr;
+
+  QString m_LammpsFile = {};
+  DataArrayPath m_AtomFeatureLabelsPath = {};
 
 public:
   ExportLAMMPSFile(const ExportLAMMPSFile&) = delete;            // Copy Constructor Not Implemented

@@ -8,7 +8,6 @@
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/Constants.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/CoreFilters/FileWriter.h"
 #include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/DataArrays/StringDataArray.h"
@@ -18,6 +17,7 @@
 #include "SIMPLib/FilterParameters/IntVec3FilterParameter.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/Geometry/MeshStructs.h"
+#include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "SimulationIO/SimulationIOPlugin.h"
 
@@ -51,34 +51,120 @@ class SimulationIO_EXPORT ExportDAMASKFiles : public AbstractFilter
 #endif
 
 public:
-  SIMPL_SHARED_POINTERS(ExportDAMASKFiles)
-  SIMPL_FILTER_NEW_MACRO(ExportDAMASKFiles)
-  SIMPL_TYPE_MACRO_SUPER(ExportDAMASKFiles, AbstractFilter)
+  using Self = ExportDAMASKFiles;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<Self>;
+  static Pointer NullPointer();
+
+  static std::shared_ptr<ExportDAMASKFiles> New();
+
+  /**
+   * @brief Returns the name of the class for _SUPERExportDAMASKFiles
+   */
+  const QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for _SUPERExportDAMASKFiles
+   */
+  static QString ClassName();
 
   ~ExportDAMASKFiles() override;
 
-  SIMPL_FILTER_PARAMETER(int, DataFormat)
+  /**
+   * @brief Setter property for DataFormat
+   */
+  void setDataFormat(const int& value);
+  /**
+   * @brief Getter property for DataFormat
+   * @return Value of DataFormat
+   */
+  int getDataFormat() const;
+
   Q_PROPERTY(int DataFormat READ getDataFormat WRITE setDataFormat)
 
-  SIMPL_FILTER_PARAMETER(QString, OutputPath)
+  /**
+   * @brief Setter property for OutputPath
+   */
+  void setOutputPath(const QString& value);
+  /**
+   * @brief Getter property for OutputPath
+   * @return Value of OutputPath
+   */
+  QString getOutputPath() const;
+
   Q_PROPERTY(QString OutputPath READ getOutputPath WRITE setOutputPath)
 
-  SIMPL_FILTER_PARAMETER(QString, GeometryFileName)
+  /**
+   * @brief Setter property for GeometryFileName
+   */
+  void setGeometryFileName(const QString& value);
+  /**
+   * @brief Getter property for GeometryFileName
+   * @return Value of GeometryFileName
+   */
+  QString getGeometryFileName() const;
+
   Q_PROPERTY(QString GeometryFileName READ getGeometryFileName WRITE setGeometryFileName)
 
-  SIMPL_FILTER_PARAMETER(int, HomogenizationIndex)
+  /**
+   * @brief Setter property for HomogenizationIndex
+   */
+  void setHomogenizationIndex(const int& value);
+  /**
+   * @brief Getter property for HomogenizationIndex
+   * @return Value of HomogenizationIndex
+   */
+  int getHomogenizationIndex() const;
+
   Q_PROPERTY(int HomogenizationIndex READ getHomogenizationIndex WRITE setHomogenizationIndex)
 
-  SIMPL_FILTER_PARAMETER(DataArrayPath, FeatureIdsArrayPath)
+  /**
+   * @brief Setter property for FeatureIdsArrayPath
+   */
+  void setFeatureIdsArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for FeatureIdsArrayPath
+   * @return Value of FeatureIdsArrayPath
+   */
+  DataArrayPath getFeatureIdsArrayPath() const;
+
   Q_PROPERTY(DataArrayPath FeatureIdsArrayPath READ getFeatureIdsArrayPath WRITE setFeatureIdsArrayPath)
 
-  SIMPL_FILTER_PARAMETER(DataArrayPath, CellPhasesArrayPath)
+  /**
+   * @brief Setter property for CellPhasesArrayPath
+   */
+  void setCellPhasesArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for CellPhasesArrayPath
+   * @return Value of CellPhasesArrayPath
+   */
+  DataArrayPath getCellPhasesArrayPath() const;
+
   Q_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
 
-  SIMPL_FILTER_PARAMETER(DataArrayPath, CellEulerAnglesArrayPath)
+  /**
+   * @brief Setter property for CellEulerAnglesArrayPath
+   */
+  void setCellEulerAnglesArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for CellEulerAnglesArrayPath
+   * @return Value of CellEulerAnglesArrayPath
+   */
+  DataArrayPath getCellEulerAnglesArrayPath() const;
+
   Q_PROPERTY(DataArrayPath CellEulerAnglesArrayPath READ getCellEulerAnglesArrayPath WRITE setCellEulerAnglesArrayPath)
 
-  SIMPL_FILTER_PARAMETER(bool, CompressGeomFile)
+  /**
+   * @brief Setter property for CompressGeomFile
+   */
+  void setCompressGeomFile(const bool& value);
+  /**
+   * @brief Getter property for CompressGeomFile
+   * @return Value of CompressGeomFile
+   */
+  bool getCompressGeomFile() const;
+
   Q_PROPERTY(bool CompressGeomFile READ getCompressGeomFile WRITE setCompressGeomFile)
 
   /**
@@ -184,9 +270,21 @@ protected:
   void initialize();
 
 private:
-  DEFINE_DATAARRAY_VARIABLE(int32_t, FeatureIds)
-  DEFINE_DATAARRAY_VARIABLE(int32_t, CellPhases)
-  DEFINE_DATAARRAY_VARIABLE(float, CellEulerAngles)
+  std::weak_ptr<DataArray<int32_t>> m_FeatureIdsPtr;
+  int32_t* m_FeatureIds = nullptr;
+  std::weak_ptr<DataArray<int32_t>> m_CellPhasesPtr;
+  int32_t* m_CellPhases = nullptr;
+  std::weak_ptr<DataArray<float>> m_CellEulerAnglesPtr;
+  float* m_CellEulerAngles = nullptr;
+
+  int m_DataFormat = {};
+  QString m_OutputPath = {};
+  QString m_GeometryFileName = {};
+  int m_HomogenizationIndex = {};
+  DataArrayPath m_FeatureIdsArrayPath = {};
+  DataArrayPath m_CellPhasesArrayPath = {};
+  DataArrayPath m_CellEulerAnglesArrayPath = {};
+  bool m_CompressGeomFile = {};
 
 public:
   /* Rule of 5: All special member functions should be defined if any are defined.
