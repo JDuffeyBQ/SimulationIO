@@ -74,7 +74,7 @@ public:
   /**
    * @brief Setter property for DataFormat
    */
-  void setDataFormat(const int& value);
+  void setDataFormat(int value);
   /**
    * @brief Getter property for DataFormat
    * @return Value of DataFormat
@@ -110,7 +110,7 @@ public:
   /**
    * @brief Setter property for HomogenizationIndex
    */
-  void setHomogenizationIndex(const int& value);
+  void setHomogenizationIndex(int value);
   /**
    * @brief Getter property for HomogenizationIndex
    * @return Value of HomogenizationIndex
@@ -158,7 +158,7 @@ public:
   /**
    * @brief Setter property for CompressGeomFile
    */
-  void setCompressGeomFile(const bool& value);
+  void setCompressGeomFile(bool value);
   /**
    * @brief Getter property for CompressGeomFile
    * @return Value of CompressGeomFile

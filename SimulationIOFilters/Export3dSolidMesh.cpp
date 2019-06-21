@@ -1120,7 +1120,7 @@ QString Export3dSolidMesh::ClassName()
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setMeshingPackage(const int& value)
+void Export3dSolidMesh::setMeshingPackage(int value)
 {
   m_MeshingPackage = value;
 }
@@ -1204,7 +1204,7 @@ DataArrayPath Export3dSolidMesh::getFeatureCentroidArrayPath() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setRefineMesh(const bool& value)
+void Export3dSolidMesh::setRefineMesh(bool value)
 {
   m_RefineMesh = value;
 }
@@ -1216,7 +1216,7 @@ bool Export3dSolidMesh::getRefineMesh() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setMaxRadiusEdgeRatio(const float& value)
+void Export3dSolidMesh::setMaxRadiusEdgeRatio(float value)
 {
   m_MaxRadiusEdgeRatio = value;
 }
@@ -1228,7 +1228,7 @@ float Export3dSolidMesh::getMaxRadiusEdgeRatio() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setMinDihedralAngle(const float& value)
+void Export3dSolidMesh::setMinDihedralAngle(float value)
 {
   m_MinDihedralAngle = value;
 }
@@ -1240,7 +1240,7 @@ float Export3dSolidMesh::getMinDihedralAngle() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setLimitTetrahedraVolume(const bool& value)
+void Export3dSolidMesh::setLimitTetrahedraVolume(bool value)
 {
   m_LimitTetrahedraVolume = value;
 }
@@ -1252,7 +1252,7 @@ bool Export3dSolidMesh::getLimitTetrahedraVolume() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setMaxTetrahedraVolume(const float& value)
+void Export3dSolidMesh::setMaxTetrahedraVolume(float value)
 {
   m_MaxTetrahedraVolume = value;
 }
@@ -1264,7 +1264,7 @@ float Export3dSolidMesh::getMaxTetrahedraVolume() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setOptimizationLevel(const int& value)
+void Export3dSolidMesh::setOptimizationLevel(int value)
 {
   m_OptimizationLevel = value;
 }
@@ -1324,7 +1324,7 @@ QString Export3dSolidMesh::getGmshSTLFileName() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setMeshFileFormat(const int& value)
+void Export3dSolidMesh::setMeshFileFormat(int value)
 {
   m_MeshFileFormat = value;
 }
@@ -1348,7 +1348,7 @@ QString Export3dSolidMesh::getNetgenSTLFileName() const
 }
 
 // -----------------------------------------------------------------------------
-void Export3dSolidMesh::setMeshSize(const int& value)
+void Export3dSolidMesh::setMeshSize(int value)
 {
   m_MeshSize = value;
 }

@@ -2201,7 +2201,7 @@ QString ImportFEAData::ClassName()
 }
 
 // -----------------------------------------------------------------------------
-void ImportFEAData::setFEAPackage(const int& value)
+void ImportFEAData::setFEAPackage(int value)
 {
   m_FEAPackage = value;
 }
@@ -2273,7 +2273,7 @@ QString ImportFEAData::getStep() const
 }
 
 // -----------------------------------------------------------------------------
-void ImportFEAData::setFrameNumber(const int& value)
+void ImportFEAData::setFrameNumber(int value)
 {
   m_FrameNumber = value;
 }
@@ -2333,7 +2333,7 @@ QString ImportFEAData::getTimeSeriesBundleName() const
 }
 
 // -----------------------------------------------------------------------------
-void ImportFEAData::setImportSingleTimeStep(const bool& value)
+void ImportFEAData::setImportSingleTimeStep(bool value)
 {
   m_ImportSingleTimeStep = value;
 }
@@ -2345,7 +2345,7 @@ bool ImportFEAData::getImportSingleTimeStep() const
 }
 
 // -----------------------------------------------------------------------------
-void ImportFEAData::setSingleTimeStepValue(const int& value)
+void ImportFEAData::setSingleTimeStepValue(int value)
 {
   m_SingleTimeStepValue = value;
 }

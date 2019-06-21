@@ -89,7 +89,7 @@ public:
   /**
    * @brief Setter property for FEAPackage
    */
-  void setFEAPackage(const int& value);
+  void setFEAPackage(int value);
   /**
    * @brief Getter property for FEAPackage
    * @return Value of FEAPackage
@@ -137,7 +137,7 @@ public:
   /**
    * @brief Setter property for NumDepvar
    */
-  void setNumDepvar(const int& value);
+  void setNumDepvar(int value);
   /**
    * @brief Getter property for NumDepvar
    * @return Value of NumDepvar
@@ -149,7 +149,7 @@ public:
   /**
    * @brief Setter property for NumMatConst
    */
-  void setNumMatConst(const int& value);
+  void setNumMatConst(int value);
   /**
    * @brief Getter property for NumMatConst
    * @return Value of NumMatConst
@@ -161,7 +161,7 @@ public:
   /**
    * @brief Setter property for NumUserOutVar
    */
-  void setNumUserOutVar(const int& value);
+  void setNumUserOutVar(int value);
   /**
    * @brief Getter property for NumUserOutVar
    * @return Value of NumUserOutVar
@@ -233,7 +233,7 @@ public:
   /**
    * @brief Setter property for NumClusters
    */
-  void setNumClusters(const int& value);
+  void setNumClusters(int value);
   /**
    * @brief Getter property for NumClusters
    * @return Value of NumClusters

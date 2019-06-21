@@ -514,7 +514,7 @@ QString ExportDAMASKFiles::ClassName()
 }
 
 // -----------------------------------------------------------------------------
-void ExportDAMASKFiles::setDataFormat(const int& value)
+void ExportDAMASKFiles::setDataFormat(int value)
 {
   m_DataFormat = value;
 }
@@ -550,7 +550,7 @@ QString ExportDAMASKFiles::getGeometryFileName() const
 }
 
 // -----------------------------------------------------------------------------
-void ExportDAMASKFiles::setHomogenizationIndex(const int& value)
+void ExportDAMASKFiles::setHomogenizationIndex(int value)
 {
   m_HomogenizationIndex = value;
 }
@@ -598,7 +598,7 @@ DataArrayPath ExportDAMASKFiles::getCellEulerAnglesArrayPath() const
 }
 
 // -----------------------------------------------------------------------------
-void ExportDAMASKFiles::setCompressGeomFile(const bool& value)
+void ExportDAMASKFiles::setCompressGeomFile(bool value)
 {
   m_CompressGeomFile = value;
 }

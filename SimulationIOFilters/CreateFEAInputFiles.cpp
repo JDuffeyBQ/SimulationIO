@@ -955,7 +955,7 @@ QString CreateFEAInputFiles::ClassName()
 }
 
 // -----------------------------------------------------------------------------
-void CreateFEAInputFiles::setFEAPackage(const int& value)
+void CreateFEAInputFiles::setFEAPackage(int value)
 {
   m_FEAPackage = value;
 }
@@ -1003,7 +1003,7 @@ QString CreateFEAInputFiles::getOutputFilePrefix() const
 }
 
 // -----------------------------------------------------------------------------
-void CreateFEAInputFiles::setNumDepvar(const int& value)
+void CreateFEAInputFiles::setNumDepvar(int value)
 {
   m_NumDepvar = value;
 }
@@ -1015,7 +1015,7 @@ int CreateFEAInputFiles::getNumDepvar() const
 }
 
 // -----------------------------------------------------------------------------
-void CreateFEAInputFiles::setNumMatConst(const int& value)
+void CreateFEAInputFiles::setNumMatConst(int value)
 {
   m_NumMatConst = value;
 }
@@ -1027,7 +1027,7 @@ int CreateFEAInputFiles::getNumMatConst() const
 }
 
 // -----------------------------------------------------------------------------
-void CreateFEAInputFiles::setNumUserOutVar(const int& value)
+void CreateFEAInputFiles::setNumUserOutVar(int value)
 {
   m_NumUserOutVar = value;
 }
@@ -1099,7 +1099,7 @@ IntVec3Type CreateFEAInputFiles::getNumKeypoints() const
 }
 
 // -----------------------------------------------------------------------------
-void CreateFEAInputFiles::setNumClusters(const int& value)
+void CreateFEAInputFiles::setNumClusters(int value)
 {
   m_NumClusters = value;
 }

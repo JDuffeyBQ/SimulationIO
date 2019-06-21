@@ -113,7 +113,7 @@ public:
   /**
    * @brief Setter property for FEAPackage
    */
-  void setFEAPackage(const int& value);
+  void setFEAPackage(int value);
   /**
    * @brief Getter property for FEAPackage
    * @return Value of FEAPackage
@@ -185,7 +185,7 @@ public:
   /**
    * @brief Setter property for FrameNumber
    */
-  void setFrameNumber(const int& value);
+  void setFrameNumber(int value);
   /**
    * @brief Getter property for FrameNumber
    * @return Value of FrameNumber
@@ -245,7 +245,7 @@ public:
   /**
    * @brief Setter property for ImportSingleTimeStep
    */
-  void setImportSingleTimeStep(const bool& value);
+  void setImportSingleTimeStep(bool value);
   /**
    * @brief Getter property for ImportSingleTimeStep
    * @return Value of ImportSingleTimeStep
@@ -257,7 +257,7 @@ public:
   /**
    * @brief Setter property for SingleTimeStepValue
    */
-  void setSingleTimeStepValue(const int& value);
+  void setSingleTimeStepValue(int value);
   /**
    * @brief Getter property for SingleTimeStepValue
    * @return Value of SingleTimeStepValue

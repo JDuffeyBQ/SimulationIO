@@ -104,7 +104,7 @@ public:
   /**
    * @brief Setter property for MeshingPackage
    */
-  void setMeshingPackage(const int& value);
+  void setMeshingPackage(int value);
   /**
    * @brief Getter property for MeshingPackage
    * @return Value of MeshingPackage
@@ -188,7 +188,7 @@ public:
   /**
    * @brief Setter property for RefineMesh
    */
-  void setRefineMesh(const bool& value);
+  void setRefineMesh(bool value);
   /**
    * @brief Getter property for RefineMesh
    * @return Value of RefineMesh
@@ -200,7 +200,7 @@ public:
   /**
    * @brief Setter property for MaxRadiusEdgeRatio
    */
-  void setMaxRadiusEdgeRatio(const float& value);
+  void setMaxRadiusEdgeRatio(float value);
   /**
    * @brief Getter property for MaxRadiusEdgeRatio
    * @return Value of MaxRadiusEdgeRatio
@@ -212,7 +212,7 @@ public:
   /**
    * @brief Setter property for MinDihedralAngle
    */
-  void setMinDihedralAngle(const float& value);
+  void setMinDihedralAngle(float value);
   /**
    * @brief Getter property for MinDihedralAngle
    * @return Value of MinDihedralAngle
@@ -224,7 +224,7 @@ public:
   /**
    * @brief Setter property for LimitTetrahedraVolume
    */
-  void setLimitTetrahedraVolume(const bool& value);
+  void setLimitTetrahedraVolume(bool value);
   /**
    * @brief Getter property for LimitTetrahedraVolume
    * @return Value of LimitTetrahedraVolume
@@ -236,7 +236,7 @@ public:
   /**
    * @brief Setter property for MaxTetrahedraVolume
    */
-  void setMaxTetrahedraVolume(const float& value);
+  void setMaxTetrahedraVolume(float value);
   /**
    * @brief Getter property for MaxTetrahedraVolume
    * @return Value of MaxTetrahedraVolume
@@ -248,7 +248,7 @@ public:
   /**
    * @brief Setter property for OptimizationLevel
    */
-  void setOptimizationLevel(const int& value);
+  void setOptimizationLevel(int value);
   /**
    * @brief Getter property for OptimizationLevel
    * @return Value of OptimizationLevel
@@ -308,7 +308,7 @@ public:
   /**
    * @brief Setter property for MeshFileFormat
    */
-  void setMeshFileFormat(const int& value);
+  void setMeshFileFormat(int value);
   /**
    * @brief Getter property for MeshFileFormat
    * @return Value of MeshFileFormat
@@ -332,7 +332,7 @@ public:
   /**
    * @brief Setter property for MeshSize
    */
-  void setMeshSize(const int& value);
+  void setMeshSize(int value);
   /**
    * @brief Getter property for MeshSize
    * @return Value of MeshSize
